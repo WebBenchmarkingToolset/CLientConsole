@@ -1,0 +1,21 @@
+{
+  "fileWriteOperationConfigs": [
+    {
+      "fileSize": 1,
+      "threads": 10,
+      "iterations": 1
+    }
+  ],
+  "Hosts": [
+    {
+      "BaseUrl": "https://localhost:7167",
+      "Name": "Host1"
+    },
+    {
+      "BaseUrl": "https://localhost:7167",
+      "Name": "Host2"
+    }
+  ],
+  "SleepAfterHost": 1,
+  "SleepBeforeIteration": 2000
+}
