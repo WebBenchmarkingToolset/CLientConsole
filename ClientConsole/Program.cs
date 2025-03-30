@@ -2,8 +2,7 @@
 using ClientConsole.utilities;
 using System.Text.Json;
 
-Console.WriteLine("Hello, World!");
-
+Console.WriteLine("Hello,");
 
 BenchmarkAppContext appContext = new()
 {
@@ -11,8 +10,19 @@ BenchmarkAppContext appContext = new()
     logger = new Logger()
 };
 
-new FileWriteOperation(appContext).run();
+try
+{
 
+
+    new FileWriteOperation(appContext).run();
+
+
+    appContext.logger.Success("*********************Execution Succeed**************************");
+}
+catch (Exception ex)
+{
+    appContext.logger.Error($""+ ex.Message);
+}
 
 appContext.logger.Info("*********************Execution Finished**************************");
 Console.ReadLine();

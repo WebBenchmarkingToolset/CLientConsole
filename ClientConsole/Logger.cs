@@ -12,7 +12,8 @@ namespace ClientConsole
         {
             Info,
             Warning,
-            Error
+            Error,
+            Success
         }
 
         public static void Log(string message, LogLevel level = LogLevel.Info)
@@ -22,6 +23,7 @@ namespace ClientConsole
                 LogLevel.Info => ConsoleColor.White,
                 LogLevel.Warning => ConsoleColor.Yellow,
                 LogLevel.Error => ConsoleColor.Red,
+                LogLevel.Success => ConsoleColor.Green,
                 _ => ConsoleColor.White
             };
 
@@ -35,5 +37,6 @@ namespace ClientConsole
         public void Warning(string message) => Log(message, LogLevel.Warning);
 
         public void Error(string message) => Log(message, LogLevel.Error);
+        public void Success(string message) => Log(message, LogLevel.Success);
     }
 }

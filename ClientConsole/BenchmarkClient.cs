@@ -67,9 +67,10 @@ namespace ClientConsole
                             responseBody = response.responseBody,
                             StatusCode = response.StatusCode,
                             iteration = i,
-                            threadId= threardNumber,
-                            hostName=host.Name,
-                            requestName= requestName
+                            threadId = threardNumber,
+                            hostName = host.Name,
+                            requestName = requestName,
+                            hasError = (response.StatusCode == 200) ? 0 : 1
                         });
                     });
                 }
@@ -97,6 +98,7 @@ namespace ClientConsole
         public required int iteration { get; set;}
         public required string hostName { get; set;}
         public required string requestName { get; set;}
+        public required int hasError { get; set; } = 1;
 
     }
 

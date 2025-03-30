@@ -14,7 +14,7 @@ namespace ClientConsole
         //https://localhost:7167/api/Operations/fileWrite?fileSizeMB=100
 
         const string REQUEST_NAME = "FileWrite";
-        CSVFile<ReportModel> csvFile;
+        CSVFile<FileWriteOperationModel> csvFile;
 
 
         public FileWriteOperation(BenchmarkAppContext context)
@@ -42,7 +42,7 @@ namespace ClientConsole
             List<BenchmarkRequestRecord> records = benchmarkClient.Run(REQUEST_NAME, HttpMethod.Get, relativeURL, "",
                 threads, iterations);
 
-            IEnumerable<ReportModel> avg = records
+/*            IEnumerable<ReportModel> avg = records
                 .Where(x=>x.StatusCode==200)
                 
                 .GroupBy(x => 
@@ -53,22 +53,35 @@ namespace ClientConsole
                     avg=(val.Select(x=>Int32.Parse(x)).Average().ToInt()),
                     fileSize= fileSize
                     }
-                );
+                );*/
 
-            csvFile.append(avg);
+            IEnumerable<FileWriteOperationModel>  operationRecords = records.Select(x => new FileWriteOperationModel()
+            {
+                period = x.period,
+                responseBody = x.responseBody,
+                StatusCode = x.StatusCode,
+                iteration = x.iteration,
+                threadId = x.threadId,
+                hostName = x.hostName,
+                requestName = x.requestName,
+                hasError = x.hasError,
+                fileSize = fileSize
+            });
+            csvFile.append(operationRecords);
         }
 
     }
 
-    public class FileWriteOperationModel
+    public class FileWriteOperationModel : BenchmarkRequestRecord
     {
-
+        public required int fileSize { get; set; }
     }
-
+/*
     internal class ReportModel
     {
         public required string hostName { get; set;}
         public required int avg { get; set;}
         public required int fileSize { get; set;}
     }
+*/
 }
