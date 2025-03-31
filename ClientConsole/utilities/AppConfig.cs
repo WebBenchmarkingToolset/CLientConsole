@@ -34,7 +34,8 @@ namespace ClientConsole.utilities
         public int SleepAfterHost { get; set; } = 2000;
         public int SleepBeforeIteration { get; set; } = 2000;
 
-        public FileWriteOperationConfig[]  fileWriteOperationConfigs { get; set; } = { new() };
+        public FileOperationConfig[]  fileWriteOperationConfigs { get; set; } =[];
+        public FileOperationConfig[]  fileReadOperationConfigs { get; set; } = [];
     }
 
 
@@ -52,7 +53,7 @@ namespace ClientConsole.utilities
         public int iterations { get; set; } = 1;
     }
 
-    public class FileWriteOperationConfig: OperationConfig
+    public class FileOperationConfig: OperationConfig
     {
         public int fileSize { get; set; } = 100;
     }

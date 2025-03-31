@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace ClientConsole.operations
 {
-    public class FileWriteOperation
+    public class FileReadOperation
     {
         BenchmarkClient benchmarkClient;
         BenchmarkAppContext context;
 
-        //https://localhost:7167/api/Operations/fileWrite?fileSizeMB=100
+        //https://localhost:7167/api/Operations/fileRead?fileSizeMB=100
 
-        const string REQUEST_NAME = "FileWrite";
+        const string REQUEST_NAME = "FileRead";
         CSVFile<FileOperationModel> csvFile;
 
 
-        public FileWriteOperation(BenchmarkAppContext context)
+        public FileReadOperation(BenchmarkAppContext context)
         {
             this.context = context;
             benchmarkClient = new BenchmarkClient(context);
@@ -27,9 +27,9 @@ namespace ClientConsole.operations
 
         public void run()
         {
-            foreach (var fileWriteConfig in context.config.fileWriteOperationConfigs)
+            foreach (var fileReadConfig in context.config.fileReadOperationConfigs)
             {
-                run(fileWriteConfig.fileSize, fileWriteConfig.iterations, fileWriteConfig.threads);
+                run(fileReadConfig.fileSize, fileReadConfig.iterations, fileReadConfig.threads);
             }
         }
 
@@ -38,22 +38,9 @@ namespace ClientConsole.operations
         {
             context.logger.Info($"Running Request '{REQUEST_NAME}' with file size: {fileSize}MB");
 
-            string relativeURL = "/api/Operations/fileWrite?fileSizeMB=" + fileSize;
+            string relativeURL = "/api/Operations/fileRead?fileSizeMB=" + fileSize;
             List<BenchmarkRequestRecord> records = benchmarkClient.Run(REQUEST_NAME, HttpMethod.Get, relativeURL, "",
                 threads, iterations);
-
-            /*            IEnumerable<ReportModel> avg = records
-                            .Where(x=>x.StatusCode==200)
-
-                            .GroupBy(x => 
-                            x.hostName,
-                            x => x.responseBody,
-                            (hostName, val) => new ReportModel(){ 
-                                hostName= hostName,
-                                avg=(val.Select(x=>Int32.Parse(x)).Average().ToInt()),
-                                fileSize= fileSize
-                                }
-                            );*/
 
             IEnumerable<FileOperationModel> operationRecords = records.Select(x => new FileOperationModel()
             {
@@ -71,17 +58,4 @@ namespace ClientConsole.operations
         }
 
     }
-
-    public class FileOperationModel : BenchmarkRequestRecord
-    {
-        public required int fileSize { get; set; }
-    }
-    /*
-        internal class ReportModel
-        {
-            public required string hostName { get; set;}
-            public required int avg { get; set;}
-            public required int fileSize { get; set;}
-        }
-    */
 }

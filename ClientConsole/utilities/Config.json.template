@@ -1,8 +1,25 @@
 {
-  "fileWriteOperationConfigs": [
+  "fileWriteOperationConfigs-disable": [
     {
-      "fileSize": 1,
-      "threads": 10,
+      "fileSize": 20,
+      "threads": 50,
+      "iterations": 1
+    },
+    {
+      "fileSize": 10,
+      "threads": 1,
+      "iterations": 1
+    }
+  ],
+  "fileReadOperationConfigs": [
+    {
+      "fileSize": 20,
+      "threads": 50,
+      "iterations": 1
+    },
+    {
+      "fileSize": 10,
+      "threads": 1,
       "iterations": 1
     }
   ],
@@ -17,5 +34,5 @@
     }
   ],
   "SleepAfterHost": 1,
-  "SleepBeforeIteration": 2000
+  "SleepBeforeIteration": 10
 }

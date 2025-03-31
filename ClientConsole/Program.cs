@@ -1,4 +1,5 @@
 ﻿using ClientConsole;
+using ClientConsole.operations;
 using ClientConsole.utilities;
 using System.Text.Json;
 
@@ -15,6 +16,7 @@ try
 
 
     new FileWriteOperation(appContext).run();
+    new FileReadOperation(appContext).run();
 
 
     appContext.logger.Success("*********************Execution Succeed**************************");
