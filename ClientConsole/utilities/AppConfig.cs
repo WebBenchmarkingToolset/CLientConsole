@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientConsole.operations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,10 @@ namespace ClientConsole.utilities
 
         public FileOperationConfig[]  fileWriteOperationConfigs { get; set; } =[];
         public FileOperationConfig[]  fileReadOperationConfigs { get; set; } = [];
+        public DataOperationConfig[] memoryWriteOperationConfigs { get; set; } = [];
+        public DataOperationConfig[] memoryReadOperationConfigs { get; set; } = [];
+        public CpuStressOperationConfig[] cpuStressOperationConfigs { get; set; } = [];
+        public DataOperationConfig[] networkStressOperationConfigs { get; set; } = [];
     }
 
 
@@ -56,5 +61,16 @@ namespace ClientConsole.utilities
     public class FileOperationConfig: OperationConfig
     {
         public int fileSize { get; set; } = 100;
+    }
+    
+    public class DataOperationConfig : OperationConfig
+    {
+        public int dataSizeMB { get; set; } = 100;
+    }
+    
+    public class CpuStressOperationConfig : OperationConfig
+    {
+        public int loadIterations { get; set; } = 1000;
+        public int loadThreads { get; set; } = 1;
     }
 }

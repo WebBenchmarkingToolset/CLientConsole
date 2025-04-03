@@ -1,8 +1,8 @@
 {
-  "fileWriteOperationConfigs-disable": [
+  "fileWriteOperationConfigs": [
     {
       "fileSize": 20,
-      "threads": 50,
+      "threads": 10,
       "iterations": 1
     },
     {
@@ -21,6 +21,35 @@
       "fileSize": 10,
       "threads": 1,
       "iterations": 1
+    }
+  ],
+  "memoryReadOperationConfigs": [
+    {
+      "threads": 1,
+      "iterations": 10,
+      "dataSizeMB": 20
+    }
+  ],
+  "memoryWriteOperationConfigs": [
+    {
+      "threads": 1,
+      "iterations": 10,
+      "dataSizeMB": 20
+    }
+  ],
+  "cpuStressOperationConfigs": [
+    {
+      "threads": 1,
+      "iterations": 10,
+      "loadIterations": 1,
+      "loadThreads": 1
+    }
+  ],
+  "networkStressOperationConfigs": [
+    {
+      "threads": 1,
+      "iterations": 10,
+      "dataSizeMB": 10
     }
   ],
   "Hosts": [

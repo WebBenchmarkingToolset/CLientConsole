@@ -18,12 +18,11 @@ namespace ClientConsole
         {
             this.context = context;
         }
-
-        public async Task<BenchmarkHttpResponse> Send(HttpMethod method, string url, string requestBody)
+        
+        public async Task<BenchmarkHttpResponse> Send(HttpMethod method, string url, HttpContent content)
         {
             HttpClient? HttpClient = null;
             HttpClient = new HttpClient();
-            var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
             HttpRequestMessage requestMessage = new HttpRequestMessage(method, url) { Content = content };
 
             Stopwatch sw = Stopwatch.StartNew();
@@ -37,10 +36,16 @@ namespace ClientConsole
                 period= Convert.ToInt64(sw.Elapsed.TotalMilliseconds)
             };
         }
-        
-        
-        public List<BenchmarkRequestRecord> Run(string requestName, HttpMethod method, 
+
+        public List<BenchmarkRequestRecord> Run(string requestName, HttpMethod method,
             string relativeUrl, string requestBody, int threads, int iterations)
+        {
+            var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+            return Run( requestName,  method, relativeUrl,  content,  threads,  iterations);
+        }
+
+        public List<BenchmarkRequestRecord> Run(string requestName, HttpMethod method, 
+            string relativeUrl, HttpContent content, int threads, int iterations)
         {
             List<BenchmarkRequestRecord> responses = new();
 
@@ -54,7 +59,7 @@ namespace ClientConsole
 
                     Parallel.For(0, threads, threardNumber =>
                     {
-                        BenchmarkHttpResponse response = Send(method, url, requestBody).Result;
+                        BenchmarkHttpResponse response = Send(method, url, content).Result;
                         //context.logger.Info($"Request Host Iteration Thread StatusCode period");
                         if (response.StatusCode==200)
                             context.logger.Info($"{requestName} {host.Name} {i} {threardNumber} ({response.period}ms)");

@@ -17,6 +17,10 @@ try
 
     new FileWriteOperation(appContext).run();
     new FileReadOperation(appContext).run();
+    new MemoryWriteOperation(appContext).run();
+    new MemoryReadOperation(appContext).run();
+    new CPUStressOperation(appContext).run();
+    new NetworkStressOperation(appContext).run();
 
 
     appContext.logger.Success("*********************Execution Succeed**************************");
