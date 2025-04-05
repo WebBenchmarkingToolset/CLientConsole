@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientConsole.utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,14 @@ namespace ClientConsole.operations
         BenchmarkAppContext context;
 
         const string REQUEST_NAME = "cpuStress";
-        CSVFile<CPUStressOperationModel> csvFile;
+        CSVFile<ClientConsole.DataOperationModel> csvFile;
 
 
-        public CPUStressOperation(BenchmarkAppContext context)
+        public CPUStressOperation(BenchmarkAppContext context, CSVFile<DataOperationModel> csvFile_)
         {
             this.context = context;
             benchmarkClient = new BenchmarkClient(context);
-            csvFile = new($"{REQUEST_NAME}.csv");
-            csvFile.resetFile();
+            csvFile = csvFile_;
         }
 
         public void run()
@@ -41,7 +41,7 @@ namespace ClientConsole.operations
             List<BenchmarkRequestRecord> records = benchmarkClient.Run(REQUEST_NAME, HttpMethod.Get, relativeURL, "",
                 threads, iterations);
 
-            IEnumerable<CPUStressOperationModel> operationRecords = records.Select(x => new CPUStressOperationModel()
+            IEnumerable<ClientConsole.DataOperationModel> operationRecords = records.Select(x => new ClientConsole.DataOperationModel()
             {
                 period = x.period,
                 responseBody = x.responseBody,
@@ -51,17 +51,11 @@ namespace ClientConsole.operations
                 hostName = x.hostName,
                 requestName = x.requestName,
                 hasError = x.hasError,
-                loadIterations=loadIterations,
-                loadThreads=loadThreads
+                loadIterations= loadIterations,
+                loadThreads= loadThreads
             });
             csvFile.append(operationRecords);
         }
 
-    }
-
-    public class CPUStressOperationModel : BenchmarkRequestRecord
-    {
-        public required int loadThreads { get; set; }
-        public required int loadIterations { get; set; }
     }
 }

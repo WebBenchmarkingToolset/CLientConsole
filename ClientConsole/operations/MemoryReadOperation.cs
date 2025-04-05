@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClientConsole.utilities;
 
 namespace ClientConsole.operations
 {
@@ -12,15 +13,14 @@ namespace ClientConsole.operations
         BenchmarkAppContext context;
 
         const string REQUEST_NAME = "MemoryRead";
-        CSVFile<DataOperationModel> csvFile;
+        CSVFile<ClientConsole.DataOperationModel> csvFile;
 
 
-        public MemoryReadOperation(BenchmarkAppContext context)
+        public MemoryReadOperation(BenchmarkAppContext context, CSVFile<DataOperationModel> csvFile_)
         {
             this.context = context;
             benchmarkClient = new BenchmarkClient(context);
-            csvFile = new($"{REQUEST_NAME}.csv");
-            csvFile.resetFile();
+            csvFile = csvFile_;
         }
 
         public void run()
@@ -41,7 +41,7 @@ namespace ClientConsole.operations
             List<BenchmarkRequestRecord> records = benchmarkClient.Run(REQUEST_NAME, HttpMethod.Get, relativeURL, "",
                 threads, iterations);
 
-            IEnumerable<DataOperationModel> operationRecords = records.Select(x => new DataOperationModel()
+            IEnumerable<ClientConsole.DataOperationModel> operationRecords = records.Select(x => new ClientConsole.DataOperationModel()
             {
                 period = x.period,
                 responseBody = x.responseBody,

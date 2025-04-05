@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using ClientConsole.utilities;
 
 namespace ClientConsole.operations
 {
@@ -13,15 +14,14 @@ namespace ClientConsole.operations
         BenchmarkAppContext context;
 
         const string REQUEST_NAME = "NetworkStress";
-        CSVFile<DataOperationModel> csvFile;
+        CSVFile<ClientConsole.DataOperationModel> csvFile;
 
 
-        public NetworkStressOperation(BenchmarkAppContext context)
+        public NetworkStressOperation(BenchmarkAppContext context, CSVFile<DataOperationModel> csvFile_)
         {
             this.context = context;
             benchmarkClient = new BenchmarkClient(context);
-            csvFile = new($"{REQUEST_NAME}.csv");
-            csvFile.resetFile();
+            csvFile = csvFile_;
         }
 
         public void run()
@@ -53,7 +53,7 @@ namespace ClientConsole.operations
             List<BenchmarkRequestRecord> records = benchmarkClient.Run(REQUEST_NAME, HttpMethod.Post, relativeURL, content,
                 threads, iterations);
 
-            IEnumerable<DataOperationModel> operationRecords = records.Select(x => new DataOperationModel()
+            IEnumerable<ClientConsole.DataOperationModel> operationRecords = records.Select(x => new ClientConsole.DataOperationModel()
             {
                 period = x.period,
                 responseBody = x.responseBody,

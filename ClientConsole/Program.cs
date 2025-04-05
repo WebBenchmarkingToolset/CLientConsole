@@ -13,14 +13,15 @@ BenchmarkAppContext appContext = new()
 
 try
 {
+    CSVFile<DataOperationModel> csvFile = new($"ClientOperationsOutput.csv");
+    csvFile.resetFile();
 
-
-    new FileWriteOperation(appContext).run();
-    new FileReadOperation(appContext).run();
-    new MemoryWriteOperation(appContext).run();
-    new MemoryReadOperation(appContext).run();
-    new CPUStressOperation(appContext).run();
-    new NetworkStressOperation(appContext).run();
+    new FileWriteOperation(appContext, csvFile).run();
+    new FileReadOperation(appContext, csvFile).run();
+    new MemoryWriteOperation(appContext, csvFile).run();
+    new MemoryReadOperation(appContext, csvFile).run();
+    new CPUStressOperation(appContext, csvFile).run();
+    new NetworkStressOperation(appContext, csvFile).run();
 
 
     appContext.logger.Success("*********************Execution Succeed**************************");

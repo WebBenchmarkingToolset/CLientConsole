@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClientConsole.utilities;
 
 namespace ClientConsole.operations
 {
@@ -14,15 +15,14 @@ namespace ClientConsole.operations
         //https://localhost:7167/api/Operations/fileWrite?fileSizeMB=100
 
         const string REQUEST_NAME = "FileWrite";
-        CSVFile<FileOperationModel> csvFile;
+        CSVFile<DataOperationModel> csvFile;
 
 
-        public FileWriteOperation(BenchmarkAppContext context)
+        public FileWriteOperation(BenchmarkAppContext context, CSVFile<DataOperationModel> csvFile_)
         {
             this.context = context;
             benchmarkClient = new BenchmarkClient(context);
-            csvFile = new($"{REQUEST_NAME}.csv");
-            csvFile.resetFile();
+            csvFile = csvFile_;
         }
 
         public void run()
@@ -55,7 +55,7 @@ namespace ClientConsole.operations
                                 }
                             );*/
 
-            IEnumerable<FileOperationModel> operationRecords = records.Select(x => new FileOperationModel()
+            IEnumerable<DataOperationModel> operationRecords = records.Select(x => new DataOperationModel()
             {
                 period = x.period,
                 responseBody = x.responseBody,
@@ -72,10 +72,6 @@ namespace ClientConsole.operations
 
     }
 
-    public class FileOperationModel : BenchmarkRequestRecord
-    {
-        public required int fileSize { get; set; }
-    }
     /*
         internal class ReportModel
         {
