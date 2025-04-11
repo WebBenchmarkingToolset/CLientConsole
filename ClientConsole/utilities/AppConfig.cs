@@ -41,6 +41,7 @@ namespace ClientConsole.utilities
         public DataOperationConfig[] memoryReadOperationConfigs { get; set; } = [];
         public CpuStressOperationConfig[] cpuStressOperationConfigs { get; set; } = [];
         public DataOperationConfig[] networkStressOperationConfigs { get; set; } = [];
+        public CustomLoadOperationConfig[] customLoadOperationConfigs { get; set; } = [];
     }
 
 
@@ -72,5 +73,12 @@ namespace ClientConsole.utilities
     {
         public int loadIterations { get; set; } = 1000;
         public int loadThreads { get; set; } = 1;
+    }
+    
+    public class CustomLoadOperationConfig : OperationConfig
+    {
+        public required string filePath { get; set; }
+        public required string name { get; set; }
+        public required string resultVarName { get; set; }
     }
 }

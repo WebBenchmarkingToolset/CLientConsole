@@ -22,6 +22,7 @@ try
     new MemoryReadOperation(appContext, csvFile).run();
     new CPUStressOperation(appContext, csvFile).run();
     new NetworkStressOperation(appContext, csvFile).run();
+    new CustomLoadOperation(appContext, csvFile).run();
 
 
     appContext.logger.Success("*********************Execution Succeed**************************");

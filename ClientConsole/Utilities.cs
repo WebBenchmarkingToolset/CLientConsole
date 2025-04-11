@@ -59,6 +59,8 @@ namespace ClientConsole
         public int? loadIterations { get; set; }
         public int? fileSize { get; set; }
 
+        public string? name { get; set; }
+
     }
 
 }
