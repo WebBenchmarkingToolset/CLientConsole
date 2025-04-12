@@ -13,10 +13,12 @@ namespace ClientConsole
     {
 
         BenchmarkAppContext context;
+        private static long initialTimeStamp = DateTime.UtcNow.Ticks;
 
         public BenchmarkClient(BenchmarkAppContext context)
         {
             this.context = context;
+            var x=initialTimeStamp;
         }
         
         public async Task<BenchmarkHttpResponse> Send(HttpMethod method, string url, HttpContent content)
@@ -68,6 +70,7 @@ namespace ClientConsole
 
                         responses.Add(new()
                         {
+                            TimeStamp=DateTime.UtcNow.Ticks- initialTimeStamp,
                             period = response.period,
                             responseBody = response.responseBody,
                             StatusCode = response.StatusCode,
@@ -96,6 +99,7 @@ namespace ClientConsole
 
     public class BenchmarkRequestRecord
     {
+        public required long TimeStamp { get; set;}
         public required int StatusCode { get; set;}
         public required string responseBody { get; set; }
         public required long period { get; set;}

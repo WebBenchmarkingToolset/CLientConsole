@@ -55,6 +55,7 @@ namespace ClientConsole.operations
 
             IEnumerable<ClientConsole.DataOperationModel> operationRecords = records.Select(x => new ClientConsole.DataOperationModel()
             {
+                TimeStamp = x.TimeStamp,
                 period = x.period,
                 responseBody = x.responseBody,
                 StatusCode = x.StatusCode,
