@@ -1,55 +1,235 @@
 {
   "fileWriteOperationConfigs": [
     {
-      "fileSize": 20,
+      "note": "/////////////////for 1 user: File size(MB)=1,10,100,500 (3 iterations)//////////////////////////",
+      "fileSize": 1,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 10,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 100,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 500,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "note": "/////////////////for 30 user: File size(MB)=1,10,100,250 (3 iterations)//////////////////////////",
+      "fileSize": 1,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 10,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 100,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 250,
+      "threads": 30,
+      "iterations": 1
+    }
+  ],
+
+
+  "fileReadOperationConfigs": [
+    {
+      "note": "/////////////////for 1 user: File size(MB)=1,10,100,500 (3 iterations)//////////////////////////",
+      "fileSize": 1,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 10,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 100,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "fileSize": 500,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "note": "/////////////////for 30 user: File size(MB)=1,10,100,500 (1 iterations)//////////////////////////",
+      "fileSize": 1,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 10,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 100,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "fileSize": 500,
+      "threads": 30,
+      "iterations": 1
+    }
+  ],
+
+
+  "memoryReadOperationConfigs": [
+    {
+      "note": "/////////////////for 1 user: dataSizeMB=10,100,1000,3000 (3 iterations)//////////////////////////",
+      "dataSizeMB": 10,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 100,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 1000,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 3000,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "note": "/////////////////for 30 user: dataSizeMB=10,100,1000,10000 (1 iterations)//////////////////////////",
+      "dataSizeMB": 10,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "dataSizeMB": 100,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "dataSizeMB": 1000,
+      "threads": 30,
+      "iterations": 1
+    }
+  ],
+
+
+  "memoryWriteOperationConfigs": [
+    {
+      "note": "/////////////////for 1 user: dataSizeMB=10,100,1000,10000 (3 iterations)//////////////////////////",
+      "dataSizeMB": 10,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 100,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 1000,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "note": "/////////////////for 30 user: dataSizeMB=10,100,1000,10000 (1 iterations)//////////////////////////",
+      "dataSizeMB": 10,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "dataSizeMB": 100,
+      "threads": 30,
+      "iterations": 1
+    },
+    {
+      "dataSizeMB": 1000,
+      "threads": 30,
+      "iterations": 1
+    }
+  ],
+
+  "cpuStressOperationConfigs": [
+    {
+      "note": "/////////////////for 20 user: loadIterations=1000,000 (1 iterations)//////////////////////////",
+      "threads": 20,
+      "iterations": 1,
+      "loadIterations": 1000000,
+      "loadThreads": 1
+    },
+    {
+      "note": "/////////////////for 1 user: loadIterations=1000,000 loadThreads=30 (1 iterations)//////////////////////////",
+      "threads": 1,
+      "iterations": 1,
+      "loadIterations": 1000000,
+      "loadThreads": 30
+    }
+  ],
+
+
+  "networkStressOperationConfigs": [
+    {
+      "note": "/////////////////for 1 user: dataSizeMB=1,10,100,200 (3 iterations)//////////////////////////",
+      "dataSizeMB": 1,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 10,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "dataSizeMB": 100,
+      "threads": 1,
+      "iterations": 3
+    },
+    {
+      "note": "/////////////////for 10 user: File size(MB)=1,10,100,500 (3 iterations)//////////////////////////",
+      "dataSizeMB": 1,
       "threads": 10,
       "iterations": 1
     },
     {
-      "fileSize": 10,
-      "threads": 1,
-      "iterations": 1
-    }
-  ],
-  "fileReadOperationConfigs": [
-    {
-      "fileSize": 20,
-      "threads": 50,
+      "dataSizeMB": 10,
+      "threads": 10,
       "iterations": 1
     },
     {
-      "fileSize": 10,
-      "threads": 1,
+      "dataSizeMB": 100,
+      "threads": 10,
       "iterations": 1
     }
+
   ],
-  "memoryReadOperationConfigs": [
+
+
+
+  "customLoadOperationConfigs-x": [
     {
       "threads": 1,
-      "iterations": 10,
-      "dataSizeMB": 20
-    }
-  ],
-  "memoryWriteOperationConfigs": [
-    {
-      "threads": 1,
-      "iterations": 10,
-      "dataSizeMB": 20
-    }
-  ],
-  "cpuStressOperationConfigs": [
-    {
-      "threads": 1,
-      "iterations": 10,
-      "loadIterations": 1,
-      "loadThreads": 1
-    }
-  ],
-  "networkStressOperationConfigs": [
-    {
-      "threads": 1,
-      "iterations": 10,
-      "dataSizeMB": 10
+      "iterations": 1,
+      "name": "load1",
+      "filePath": "load.py",
+      "resultVarName": "result"
     }
   ],
   "Hosts": [
