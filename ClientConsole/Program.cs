@@ -13,7 +13,7 @@ BenchmarkAppContext appContext = new()
 
 try
 {
-    CSVFile<DataOperationModel> csvFile = new($"ClientOperationsOutput.csv");
+    CSVFile<DataOperationModel> csvFile = new($"ClientOperationsOutput - {DateTime.Now:yyyy-MM-dd HHmmss}.csv");
     csvFile.resetFile();
 
     new FileWriteOperation(appContext, csvFile).run();
@@ -33,4 +33,9 @@ catch (Exception ex)
 }
 
 appContext.logger.Info("*********************Execution Finished**************************");
+
+string logFileName = $"logs\\{DateTime.Now:yyyy-MM-dd HHmmss}.log";
+appContext.logger.saveFile(logFileName);
+appContext.logger.Log("log file saved " + logFileName);
+
 Console.ReadLine();

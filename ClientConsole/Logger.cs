@@ -8,6 +8,8 @@ namespace ClientConsole
 {
     public class Logger
     {
+        StringBuilder logBuilder = new StringBuilder();
+
         public enum LogLevel
         {
             Info,
@@ -16,7 +18,7 @@ namespace ClientConsole
             Success
         }
 
-        public static void Log(string message, LogLevel level = LogLevel.Info)
+        public void Log(string message, LogLevel level = LogLevel.Info)
         {
             Console.ForegroundColor = level switch
             {
@@ -27,8 +29,20 @@ namespace ClientConsole
                 _ => ConsoleColor.White
             };
 
-            Console.WriteLine($"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{level}] {message}");
+            string lineStr = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{level}] {message}";
+            Console.WriteLine(lineStr);
+            logBuilder.AppendLine(lineStr);
             Console.ResetColor();
+        }
+
+        public void saveFile(string fileName)
+        {
+            if (!Directory.Exists("logs"))
+            {
+                Directory.CreateDirectory("logs");
+            }
+
+            File.WriteAllText(fileName, logBuilder.ToString());
         }
 
 

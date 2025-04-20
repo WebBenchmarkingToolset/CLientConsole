@@ -23,8 +23,8 @@ namespace ClientConsole
         
         public async Task<BenchmarkHttpResponse> Send(HttpMethod method, string url, HttpContent content)
         {
-            HttpClient? HttpClient = null;
-            HttpClient = new HttpClient();
+            HttpClient? HttpClient = new HttpClient();
+            HttpClient.Timeout= TimeSpan.FromMinutes(21); ;
             HttpRequestMessage requestMessage = new HttpRequestMessage(method, url) { Content = content };
 
             Stopwatch sw = Stopwatch.StartNew();

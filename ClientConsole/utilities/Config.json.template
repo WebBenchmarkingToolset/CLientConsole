@@ -1,7 +1,7 @@
 {
   "fileWriteOperationConfigs": [
     {
-      "note": "/////////////////for 1 user: File size(MB)=1,10,100,500 (3 iterations)//////////////////////////",
+      "note": "/////////////////for 1 user: File size(MB)=1,10,100,250 (3 iterations)//////////////////////////",
       "fileSize": 1,
       "threads": 1,
       "iterations": 3
@@ -17,7 +17,7 @@
       "iterations": 3
     },
     {
-      "fileSize": 500,
+      "fileSize": 250,
       "threads": 1,
       "iterations": 3
     },
@@ -47,7 +47,7 @@
 
   "fileReadOperationConfigs": [
     {
-      "note": "/////////////////for 1 user: File size(MB)=1,10,100,500 (3 iterations)//////////////////////////",
+      "note": "/////////////////for 1 user: File size(MB)=1,10,100,250 (3 iterations)//////////////////////////",
       "fileSize": 1,
       "threads": 1,
       "iterations": 3
@@ -63,12 +63,12 @@
       "iterations": 3
     },
     {
-      "fileSize": 500,
+      "fileSize": 250,
       "threads": 1,
       "iterations": 3
     },
     {
-      "note": "/////////////////for 30 user: File size(MB)=1,10,100,500 (1 iterations)//////////////////////////",
+      "note": "/////////////////for 30 user: File size(MB)=1,10,100,250 (1 iterations)//////////////////////////",
       "fileSize": 1,
       "threads": 30,
       "iterations": 1
@@ -84,7 +84,7 @@
       "iterations": 1
     },
     {
-      "fileSize": 500,
+      "fileSize": 250,
       "threads": 30,
       "iterations": 1
     }
@@ -93,7 +93,7 @@
 
   "memoryReadOperationConfigs": [
     {
-      "note": "/////////////////for 1 user: dataSizeMB=10,100,1000,3000 (3 iterations)//////////////////////////",
+      "note": "/////////////////for 1 user: dataSizeMB=10,100,500 (3 iterations)//////////////////////////",
       "dataSizeMB": 10,
       "threads": 1,
       "iterations": 3
@@ -104,17 +104,12 @@
       "iterations": 3
     },
     {
-      "dataSizeMB": 1000,
+      "dataSizeMB": 500,
       "threads": 1,
       "iterations": 3
     },
     {
-      "dataSizeMB": 3000,
-      "threads": 1,
-      "iterations": 3
-    },
-    {
-      "note": "/////////////////for 30 user: dataSizeMB=10,100,1000,10000 (1 iterations)//////////////////////////",
+      "note": "/////////////////for 30 user: dataSizeMB=10,100,500(1 iterations)//////////////////////////",
       "dataSizeMB": 10,
       "threads": 30,
       "iterations": 1
@@ -125,7 +120,7 @@
       "iterations": 1
     },
     {
-      "dataSizeMB": 1000,
+      "dataSizeMB": 500,
       "threads": 30,
       "iterations": 1
     }
@@ -134,7 +129,7 @@
 
   "memoryWriteOperationConfigs": [
     {
-      "note": "/////////////////for 1 user: dataSizeMB=10,100,1000,10000 (3 iterations)//////////////////////////",
+      "note": "/////////////////for 1 user: dataSizeMB=10,100,500(3 iterations)//////////////////////////",
       "dataSizeMB": 10,
       "threads": 1,
       "iterations": 3
@@ -145,12 +140,12 @@
       "iterations": 3
     },
     {
-      "dataSizeMB": 1000,
+      "dataSizeMB": 500,
       "threads": 1,
       "iterations": 3
     },
     {
-      "note": "/////////////////for 30 user: dataSizeMB=10,100,1000,10000 (1 iterations)//////////////////////////",
+      "note": "/////////////////for 30 user: dataSizeMB=10,100,500 (1 iterations)//////////////////////////",
       "dataSizeMB": 10,
       "threads": 30,
       "iterations": 1
@@ -161,7 +156,7 @@
       "iterations": 1
     },
     {
-      "dataSizeMB": 1000,
+      "dataSizeMB": 500,
       "threads": 30,
       "iterations": 1
     }
@@ -238,7 +233,7 @@
       "Name": "Host1"
     },
     {
-      "BaseUrl": "https://localhost:7167",
+      "BaseUrl": "https://cloudbenchmark20250419105451.azurewebsites.net",
       "Name": "Host2"
     }
   ],
