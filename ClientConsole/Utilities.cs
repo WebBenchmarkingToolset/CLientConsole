@@ -63,4 +63,30 @@ namespace ClientConsole
 
     }
 
+    public static class ExceptionExtensions
+    {
+        public static string ToDetailedString(this Exception ex)
+        {
+            var sb = new StringBuilder();
+            int level = 0;
+
+            while (ex != null)
+            {
+                sb.AppendLine($"Exception Level {level}: {ex.GetType().FullName}");
+                sb.AppendLine($"Message: {ex.Message}");
+                sb.AppendLine($"Source: {ex.Source}");
+                sb.AppendLine($"TargetSite: {ex.TargetSite}");
+                sb.AppendLine("StackTrace:");
+                sb.AppendLine(ex.StackTrace);
+                sb.AppendLine(new string('-', 80));
+
+                ex = ex.InnerException;
+                level++;
+            }
+
+            return sb.ToString();
+        }
+    }
+
+
 }

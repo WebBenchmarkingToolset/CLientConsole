@@ -29,7 +29,7 @@ try
 }
 catch (Exception ex)
 {
-    appContext.logger.Error($""+ ex.Message);
+    appContext.logger.Error(ex.ToDetailedString());
 }
 
 appContext.logger.Info("*********************Execution Finished**************************");
